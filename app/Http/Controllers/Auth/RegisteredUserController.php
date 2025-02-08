@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Models\Admin;
-use App\Events\UserLogin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Events\NewUserRegisteredEvent;
@@ -39,6 +38,13 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+
+        $admin = Admin::first();
+        $admin->notify(new NewUserRegisteredNotification($user));
+        
+        NewUserRegisteredEvent::dispatch($user);
+
+        // $user->broadcastChannel();
 
         Auth::login($user);
 

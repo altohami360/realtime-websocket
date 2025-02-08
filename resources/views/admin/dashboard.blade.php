@@ -22,23 +22,16 @@
         <div class="w-full sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
-                    <h3 class="text-xl font-bold mb-2">New Users Registered (<span class="text-md">0</span>)
+                    <h3 class="text-xl font-bold mb-2">New Users Registered (<span id="admin-new-users-count"
+                                                                                   class="text-md">0</span>)
                     </h3>
                     <ul class="list-disc pl-4" id="admin-new-users">
-                        <li>Mohammed altohami</li>
-                        <li>lorem ipsum</li>
-                        <li>lorem ipsum</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    @vite(['resources/js/websocket.js'])
-
-    <script>
-        
-
-    </script>
+    @vite(['resources/js/newUserRegistered.js'])
 
 </x-app-layout>

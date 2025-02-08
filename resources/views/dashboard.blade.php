@@ -18,17 +18,5 @@
                 </div>
             </div>
         </div>
-        @vite(['resources/js/online.js'])
-
-        <script>
-            // const form = document.getElementById('submit-form');
-            // const input = document.getElementById('text-chat');
-            // form.addEventListener('submit', function (event) {
-            //     event.preventDefault();
-            //
-            //     // send message to server
-            //
-            //     input.value = '';
-            // })
-        </script>
+    </div>
 </x-app-layout>

@@ -39,7 +39,6 @@ Route::middleware('auth:web')->group(function () {
 });
 
 
-
 Route::get('/admin/dashboard', function () {
     return view('admin.dashboard');
 })->middleware(['auth:admin']);

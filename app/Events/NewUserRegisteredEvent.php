@@ -20,18 +20,34 @@ class NewUserRegisteredEvent implements shouldBroadcast
      */
     public function __construct(public User $user, public string $message = '')
     {
-        $this->message = 'New user registered: ' . $user->name;
+        $this->message = 'New user registered: '.$user->name;
     }
 
     /**
      * Get the channels the event should broadcast on.
      *
-     * @return array<int, \Illuminate\Broadcasting\Channel>
+     * @return array<int, Channel>
      */
     public function broadcastOn(): array
     {
         return [
-            new PrivateChannel('new-user-registered'),
+            new Channel('new-user-registered'),
+        ];
+    }
+
+    /**
+     * Get the data to broadcast.
+     *
+     * @return array<string, mixed>
+     */
+    public function broadcastWith(): array
+    {
+        return [
+            'message' => $this->message,
+            'user' => [
+                'name' => $this->user->name,
+                'email' => $this->user->email,
+            ]
         ];
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Broadcast;
 
 
@@ -15,17 +15,17 @@ use Illuminate\Support\Facades\Broadcast;
 |
 */
 
-// Broadcast::channel('online-users', function (User $user) {
-//     return $user;
-// });
-//
-// Broadcast::channel('new-user-registered', function (User $user) {
-//     return true;
-// });
-//
-// Broadcast::channel('chat.room.1', function (User $user) {
-//     return $user;
-// });
+Broadcast::channel('online-users', function (User $user) {
+    return $user;
+});
+
+Broadcast::channel('new-user-registered', function ($user) {
+    return $user;
+});
+
+Broadcast::channel('chat.room.1', function (User $user) {
+    return $user;
+});
 
 Broadcast::channel('online', function (User $user) {
     return [
