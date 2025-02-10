@@ -1,11 +1,12 @@
 let onlineUsers = [];
-const online = window.Echo.join('online');
+const online = window.Echo.join('online-users');
 
-online.here((users) => {
-    onlineUsers = users;
-    renderCountOfOnlineUsers(users);
-    onlineUsersChat(users);
-})
+online
+    .here((users) => {
+        onlineUsers = users;
+        renderCountOfOnlineUsers(users);
+        onlineUsersChat(users);
+    })
     .joining((user) => {
         onlineUsers.push(user);
         renderCountOfOnlineUsers(onlineUsers);
@@ -16,6 +17,9 @@ online.here((users) => {
         onlineUsers = onlineUsers.filter((onlineUser) => onlineUser.id !== user.id);
         renderCountOfOnlineUsers(onlineUsers);
         onlineUsersChat(onlineUsers);
+    })
+    .error((error) => {
+        console.error(error);
     });
 
 function renderCountOfOnlineUsers(users) {

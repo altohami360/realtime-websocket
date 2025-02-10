@@ -19,4 +19,6 @@
             </div>
         </div>
     </div>
+
+    @vite(['resources/js/online.js'])
 </x-app-layout>

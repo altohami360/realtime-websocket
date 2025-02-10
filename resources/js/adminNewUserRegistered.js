@@ -1,13 +1,12 @@
 const onlineUsers = window.Echo.channel('new-user-registered');
 
 onlineUsers.listen('NewUserRegisteredEvent', (e) => {
-    console.log('render new user notification');
     renderUserNotification();
 });
 
 function renderUserNotification() {
 
-    window.axios.get(`/admin/get-notification`)
+    window.axios.get(`/admin/notifications`)
         .then(function (response) {
             let ul = document.getElementById('admin-new-users');
             ul.innerHTML = '';

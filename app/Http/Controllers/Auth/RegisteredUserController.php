@@ -37,14 +37,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // todo: refactor to use event listeners
         event(new Registered($user));
-
         $admin = Admin::first();
         $admin->notify(new NewUserRegisteredNotification($user));
-        
         NewUserRegisteredEvent::dispatch($user);
-
-        // $user->broadcastChannel();
+        // end todo
 
         Auth::login($user);
 
